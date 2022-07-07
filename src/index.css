@@ -1,13 +1,208 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;600&display=swap');
+
+:root {
+  --primary-dark: #064663;
+  --secondary-dark: #041c32;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--secondary-dark);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+h1,
+h2,
+h3,
+p {
+  opacity: 0.9;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Roboto mono', sans-serif;
+  color: white;
+  background-color: var(--primary-dark);
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+}
+
+header {
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 20rem;
+  background-color: var(--secondary-dark) !important;
+  position: fixed;
+  width: 100vw;
+  margin-bottom: 8rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  z-index: 2;
+}
+
+header button,
+header button:active,
+header button:focus {
+  margin-right: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+  header {
+    padding: 1rem;
+  }
+  html {
+    font-size: 58%;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+  header h1 {
+    display: none;
+  }
+}
+
+header h1 {
+  margin-right: auto;
+}
+
+main {
+  flex-grow: 1;
+  /* overflow-y: scroll; */
+}
+
+form {
+  position: absolute;
+  padding: 3rem 1.5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 40%;
+  background-color: var(--secondary-dark);
+
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+form h2 {
+  margin-bottom: 5rem;
+  text-align: center;
+}
+
+input,
+input:focus,
+input:active {
+  border: none;
+  outline: none;
+  padding: 1rem;
+  font-weight: 600;
+  font-size: inherit;
+  background-color: transparent;
+  border: 2px solid white;
+  display: block;
+  color: white;
+  border-radius: 5px;
+  transition: all 0.4s;
+}
+
+@media screen and (max-width: 600px) {
+}
+
+input:focus {
+  background-color: white;
+  color: var(--secondary-dark);
+}
+
+button,
+button:focus,
+button:active {
+  border: none;
+  outline: none;
+  padding: 1rem;
+  font-weight: 600;
+  font-size: inherit;
+  display: block;
+  border-radius: 5px;
+  margin: 3rem 0;
+  background-color: var(--primary-dark);
+  color: white;
+  transition: all 0.3s;
+}
+button:active {
+  background-color: white;
+  color: var(--secondary-dark);
+}
+
+.tickets {
+  padding: 1rem;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+  /* width: 100%; */
+  /* height: 10000vh; */
+}
+
+.ticket {
+  background-color: var(--secondary-dark);
+  border-radius: 5px;
+  padding: 2rem;
+  padding-bottom: 3rem;
+  margin: 0.5rem;
+  min-width: 20rem;
+  min-height: 20rem;
+}
+
+@media screen and (max-width: 700px) {
+ .ticket {
+  min-width: 40%;
+ }  
+}
+
+
+.ticket span {
+  display: inline-block;
+  padding: 1rem;
+  margin: 1rem;
+  font-weight: 800;
+  border-radius: 5px;
+}
+
+.ticket span.highlighted {
+  background-color: rgba(0, 255, 255, 0.8);
+  color: var(--secondary-dark);
 }
