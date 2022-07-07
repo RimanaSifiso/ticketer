@@ -21,10 +21,11 @@ export default function App() {
           <div className="tickets">
             {tickets.map((ticketBar, i) => (
               <Ticket key={i}>
-                {ticketBar.map((item, k) => {
-                  if (item === 'W') return <WinBar key={k**Math.random()} />
-                  if (item === 'D') return <DrawBar key={k ** Math.random()} />
-                  if (item === 'L') return <LoseBar key={k ** Math.random()} />
+                {ticketBar.forEach((item, k) => {
+                  if (item === 'W') return <WinBar key={k ** Math.random()} />
+                  else if (item === 'D')
+                    return <DrawBar key={k ** Math.random()} />
+                  else return <LoseBar key={k ** Math.random()} />
                 })}
               </Ticket>
             ))}

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Children } from 'react'
 
 function WinBar() {
   return (
