@@ -2,13 +2,10 @@ import { createContext, useState } from 'react'
 import six from './6'
 import eight from './8'
 
-
 const TicketsContect = createContext()
 
 export function TicketContext({ children }) {
   const [tickets, setTickets] = useState([])
-
-  
 
   function generateTickets(games, outcome, numOfOutcomes, order) {
     let tickets = []
@@ -31,20 +28,24 @@ export function TicketContext({ children }) {
     if (!outcome || !numOfOutcomes || !order) return tickets
     outcome = outcome.toUpperCase()
 
-    tickets = tickets.filter((ticket) => {
+    let tickets2 = []
+
+    tickets.forEach((ticket) => {
       if (countOf(ticket, outcome) === numOfOutcomes) {
-        return ticket
+        tickets2.push(ticket)
       }
     })
 
-    tickets = tickets.filter((ticket) => {
+    let tickets3 = []
+
+    tickets2.forEach((ticket) => {
       if (order === 'first') {
         let tickLog = 0
         for (let o = 0; o < numOfOutcomes; o++) {
           if (ticket[o] === outcome) tickLog++
         }
         if (tickLog === numOfOutcomes) {
-          return ticket
+          tickets3.push(ticket)
         }
       } else if (order === 'last') {
         let tickLog = 0
@@ -52,18 +53,16 @@ export function TicketContext({ children }) {
           if (ticket[ticket.length - (o + 1)] === outcome) tickLog++
         }
         if (tickLog === numOfOutcomes) {
-          return ticket
+          tickets3.push(ticket)
         }
       } else {
-        return ticket
+        tickets3.push(ticket)
       }
     })
 
-    
-    
-    return tickets
+    return tickets3
   }
-  
+
   function getTickets(games, outcome, numOfOutcomes, order) {
     setTickets(generateTickets(games, outcome, numOfOutcomes, order))
   }
@@ -76,7 +75,7 @@ export function TicketContext({ children }) {
     <TicketsContect.Provider
       value={{
         deleteTickets,
-        
+
         getTickets,
         tickets,
       }}
