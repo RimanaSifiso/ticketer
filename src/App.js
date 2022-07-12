@@ -1,19 +1,26 @@
 import Form from './Form'
 import Ticket, { WinBar, LoseBar, DrawBar } from './Ticket'
-
+import 'react-toastify/dist/ReactToastify.css'
 import TicketsContect, { TicketContext } from './Context'
 import { useContext } from 'react'
 
 export default function App() {
-  const { getTickets, tickets, deleteTickets } = useContext(TicketsContect)
+  const { getTickets, tickets, deleteTickets } =
+    useContext(TicketsContect)
+
+  
+  
 
   return (
     <TicketContext>
       <header>
         <h1>Ticketer</h1>
-        <button onClick={deleteTickets}>Clear tickets</button>
+        <div className="btns">
+          <button onClick={deleteTickets}>Clear tickets</button>
+          
+        </div>
         <h4>
-          <em>Tickets generated: {tickets.length}</em>
+          <em>Tickets: {tickets.length}</em>
         </h4>
       </header>
       <main>
@@ -34,6 +41,7 @@ export default function App() {
           <Form getTickets={getTickets} />
         )}
       </main>
+      
     </TicketContext>
   )
 }

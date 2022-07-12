@@ -12,7 +12,7 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--secondary-dark);
+  background: wheat;
 }
 
 /* Handle */
@@ -60,13 +60,20 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem 20rem;
+  padding: 2rem;
   background-color: var(--secondary-dark) !important;
   position: fixed;
   width: 100vw;
   margin-bottom: 8rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   z-index: 2;
+}
+
+header div.btns {
+  min-width: 25rem;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 6rem;
 }
 
 header button,
@@ -82,7 +89,6 @@ header button:focus {
   html {
     font-size: 58%;
   }
-
 }
 
 @media screen and (max-width: 500px) {
@@ -106,39 +112,67 @@ form {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 40%;
+  height: 90%;
   background-color: var(--secondary-dark);
 
   border-radius: 5px;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  overflow-y: scroll;
+  /* justify-content: center; */
   align-items: stretch;
 }
 
+
+
 form h2 {
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
-input,
-input:focus,
-input:active {
+form input[type='radio'] {
+  display: block;
+  margin-right: 1rem;
+}
+
+form .input-group {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+form .input-group label {
+  display: block;
+}
+
+form h3 {
+  padding-top: 1rem;
+  font-style: italic;
+  font-weight: 400;
+  color: rgb(0, 255, 255);
+}
+
+input[type='text'],
+input[type='text']:focus,
+input[type='text']:active {
   border: none;
   outline: none;
   padding: 1rem;
+  width: 20rem;
   font-weight: 600;
   font-size: inherit;
   background-color: transparent;
-  border: 2px solid white;
+  border: 2px solid var(--primary-dark);
   display: block;
   color: white;
   border-radius: 5px;
   transition: all 0.4s;
 }
 
-@media screen and (max-width: 600px) {
+input::placeholder {
+  color: teal;
+  opacity: 0.7;
 }
 
 input:focus {
@@ -150,20 +184,30 @@ button,
 button:focus,
 button:active {
   border: none;
+  border: 2px solid transparent;
   outline: none;
   padding: 1rem;
   font-weight: 600;
   font-size: inherit;
   display: block;
   border-radius: 5px;
-  margin: 3rem 0;
-  background-color: var(--primary-dark);
-  color: white;
+  margin: 2rem 0;
+  background-color: rgb(0, 255, 255);
+  color: var(--secondary-dark);
   transition: all 0.3s;
+  opacity: 0.7;
 }
 button:active {
   background-color: white;
   color: var(--secondary-dark);
+}
+
+button.outline,
+button.outline:focus,
+button.outline:active {
+  background-color: transparent;
+  border-color: #eee;
+  color: #eee;
 }
 
 .tickets {
@@ -188,11 +232,10 @@ button:active {
 }
 
 @media screen and (max-width: 700px) {
- .ticket {
-  min-width: 40%;
- }  
+  .ticket {
+    min-width: 40%;
+  }
 }
-
 
 .ticket span {
   display: inline-block;
@@ -205,4 +248,95 @@ button:active {
 .ticket span.highlighted {
   background-color: rgba(0, 255, 255, 0.8);
   color: var(--secondary-dark);
+}
+
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.modal-bg .filter-modal {
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 50rem;
+  min-width: 40rem;
+  background-color: var(--secondary-dark);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.filter-modal h2 {
+  text-align: center;
+}
+
+.filter-modal > div {
+  padding: 1rem 0;
+}
+.filter-modal > div p {
+  padding: 0.3rem 0;
+}
+
+.filter-modal > div:last-child {
+  text-align: center;
+}
+
+.filter-modal .filt-ui {
+  /* width: 90%; */
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-dark);
+  color: white;
+  margin: 0.5rem auto;
+  border-radius: 5px;
+}
+
+.filter-modal input {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.filter-modal input[type='text'],
+.filter-modal input[type='text']:active,
+.filter-modal input[type='text']:focus {
+  background-color: white;
+  border-color: transparent;
+  margin: 0 1rem;
+  padding: 0.2rem;
+  width: 4rem;
+  color: black;
+}
+.filter-modal input[type='text']:focus {
+  border-color: rgb(0, 255, 255);
+}
+
+.filt-ui p {
+  flex-grow: 1;
+}
+.filter-modal button {
+  width: 100%;
+}
+
+.filt-ui p strong {
+  color: rgb(0, 255, 255);
+  font-size: 2rem;
+}
+
+.filt-ui span {
+  display: block;
+  padding: 1rem;
+  background-color: rgb(0, 255, 255);
+  color: var(--secondary-dark);
+  border-radius: 5px;
+  cursor: default;
 }
